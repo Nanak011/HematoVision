@@ -1,0 +1,191 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>HematoVision - Result</title>
+    <style>
+        * {
+            margin: 0;
+            padding: 0;
+            box-sizing: border-box;
+        }
+
+        body {
+            font-family: 'Segoe UI', sans-serif;
+            background: linear-gradient(135deg, #1a1a2e, #16213e, #0f3460);
+            min-height: 100vh;
+            display: flex;
+            align-items: center;
+            justify-content: center;
+            color: white;
+        }
+
+        .container {
+            background: rgba(255, 255, 255, 0.05);
+            backdrop-filter: blur(10px);
+            border: 1px solid rgba(255, 255, 255, 0.1);
+            border-radius: 20px;
+            padding: 50px 40px;
+            width: 500px;
+            text-align: center;
+            box-shadow: 0 20px 60px rgba(0,0,0,0.4);
+        }
+
+        .logo {
+            font-size: 48px;
+            margin-bottom: 5px;
+        }
+
+        h1 {
+            font-size: 22px;
+            color: rgba(255,255,255,0.5);
+            margin-bottom: 30px;
+            font-weight: 400;
+        }
+
+        .image-box {
+            margin-bottom: 25px;
+        }
+
+        .image-box img {
+            width: 180px;
+            height: 180px;
+            object-fit: cover;
+            border-radius: 15px;
+            border: 3px solid #211d1e;
+            box-shadow: 0 0 30px rgba(98, 0, 17, 0.3);
+        }
+
+        .result-card {
+            background: rgba(255,255,255,0.05);
+            border: 1px solid rgba(255,255,255,0.1);
+            border-radius: 15px;
+            padding: 25px;
+            margin-bottom: 20px;
+        }
+
+        .result-label {
+            font-size: 13px;
+            color: rgba(255,255,255,0.5);
+            text-transform: uppercase;
+            letter-spacing: 2px;
+            margin-bottom: 8px;
+        }
+
+        .result-value {
+            font-size: 36px;
+            font-weight: 800;
+            color: #211d1e;
+            text-transform: uppercase;
+            letter-spacing: 2px;
+        }
+
+        .confidence-box {
+            background: rgba(255,255,255,0.05);
+            border: 1px solid rgba(255,255,255,0.1);
+            border-radius: 15px;
+            padding: 20px;
+            margin-bottom: 25px;
+        }
+
+        .confidence-label {
+            font-size: 13px;
+            color: rgba(255,255,255,0.5);
+            margin-bottom: 10px;
+        }
+
+        .confidence-bar-bg {
+            background: rgba(255,255,255,0.1);
+            border-radius: 10px;
+            height: 10px;
+            overflow: hidden;
+            margin-bottom: 8px;
+        }
+
+        .confidence-bar-fill {
+            height: 100%;
+            border-radius: 10px;
+            background: linear-gradient(90deg, #211d1e, #2f2a2b);
+            transition: width 1s ease;
+        }
+
+        .confidence-number {
+            font-size: 24px;
+            font-weight: 700;
+            color: white;
+        }
+
+        .cell-info {
+            background: rgba(255,255,255,0.03);
+            border-radius: 10px;
+            padding: 15px;
+            margin-bottom: 25px;
+            font-size: 13px;
+            color: rgba(255,255,255,0.5);
+            line-height: 1.6;
+        }
+
+        .back-btn {
+            background: linear-gradient(135deg, #211d1e, #2f2a2b);
+            color: white;
+            border: none;
+            padding: 14px 40px;
+            font-size: 15px;
+            font-weight: 600;
+            border-radius: 50px;
+            cursor: pointer;
+            width: 100%;
+            text-decoration: none;
+            display: block;
+            transition: all 0.3s ease;
+            letter-spacing: 1px;
+        }
+
+        .back-btn:hover {
+            transform: translateY(-2px);
+            box-shadow: 0 10px 25px rgba(98, 0, 17, 0.4);
+        }
+    </style>
+</head>
+<body>
+    <div class="container">
+        <div class="logo">🔬</div>
+        <h1>Classification Result</h1>
+
+        <div class="image-box">
+            <img src="{{ img_path }}" alt="Uploaded Cell">
+        </div>
+
+        <div class="result-card">
+            <p class="result-label">Detected Cell Type</p>
+            <p class="result-value">{{ prediction }}</p>
+        </div>
+
+        <div class="confidence-box">
+            <p class="confidence-label">Confidence Score</p>
+            <div class="confidence-bar-bg">
+                <div class="confidence-bar-fill" style="width: {{ confidence }}%"></div>
+            </div>
+            <p class="confidence-number">{{ confidence }}%</p>
+        </div>
+
+        <div class="cell-info" id="cell-info">
+            <!-- Filled by JS below -->
+        </div>
+
+        <a href="/" class="back-btn">⬅ Classify Another Image</a>
+    </div>
+
+    <script>
+        const prediction = "{{ prediction }}".toUpperCase();
+        const info = {
+            "EOSINOPHIL": "Eosinophils are white blood cells that fight parasitic infections and play a role in allergic reactions. Elevated counts may indicate allergies or parasitic infections.",
+            "LYMPHOCYTE": "Lymphocytes are key immune cells responsible for fighting viral infections and producing antibodies. They are a major component of adaptive immunity.",
+            "MONOCYTE": "Monocytes are large white blood cells that differentiate into macrophages and dendritic cells. They help destroy bacteria and boost immune responses.",
+            "NEUTROPHIL": "Neutrophils are the most common white blood cells and the first responders to bacterial infections. They engulf and destroy harmful microorganisms."
+        };
+        document.getElementById('cell-info').textContent = info[prediction] || "Blood cell classified by HematoVision AI.";
+    </script>
+</body>
+</html>
