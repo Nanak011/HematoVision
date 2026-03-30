@@ -10,7 +10,7 @@ Classifies microscopic blood cell images into 4 categories:
 ### 1. Clone the repo
 
 ```bash
-git clone https://github.com/nanak011/HematoVision.git
+git clone https://github.com/nanak011/HematoVision
 cd HematoVision
 ```
 
