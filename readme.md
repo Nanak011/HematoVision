@@ -7,7 +7,7 @@ Eosinophil · Lymphocyte · Monocyte · Neutrophil
 
 Setup & Run
 1. Clone the repo
-bashgit clone https://github.com/YOUR_USERNAME/HematoVision.git
+bashgit clone https://github.com/Nanak011/HematoVision
 cd HematoVision
 2. Install dependencies
 pip install tensorflow flask numpy pillow
