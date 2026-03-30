@@ -58,6 +58,9 @@ Then open your browser and go to: `http://127.0.0.1:5000`
 ```
 HematoVision/
 │
+├──output
+├──project_report
+|  └── report.pdf
 ├── static/
 │   └── uploads/                  ← uploaded images saved here temporarily
 │
@@ -67,9 +70,8 @@ HematoVision/
 │
 ├── app.py                        ← Flask backend
 ├── blood_cell.h5                 ← pre-trained model
-├── HematoVision_Model.ipynb      ← model training notebook
-├── readme.md
-└── .gitignore
+├── HematoVision_Model.ipynb      ← model training notebook 
+└── readme.md
 ```
 
 ---
