@@ -93,6 +93,8 @@ Dataset sourced from Kaggle:
 > To retrain the model yourself, download the dataset from Kaggle and run `HematoVision_Model.ipynb`
 
 ---
+Video demosntration:
+https://drive.google.com/file/d/1Gm_fNMi2hbPTAsaVb5HICGdNFRYlON_5/view?usp=sharing
 
 ## 🛠 Tech Stack
 
